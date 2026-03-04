@@ -1,0 +1,17 @@
+android:layout_height="wrap_content"
+        android:text="Size uygun ilan bulunamadı.\nProfil bilgilerinizi kontrol edin."
+        android:textColor="#757575"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone"/>
+
+    <!-- Alt Navigasyon -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</LinearLayout>
