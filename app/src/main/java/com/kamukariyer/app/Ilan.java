@@ -2,6 +2,7 @@ package com.kamukariyer.app;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Ilan implements Serializable {
     
@@ -14,6 +15,7 @@ public class Ilan implements Serializable {
     private String sehir;
     private String aciklama;
     private String basvuruLinki;
+    private String yayinlanmaAdresi; // YENİ: İlanın yayınlandığı resmi adres
     
     private double kpssMinimum;
     private String ehliyetSartı;
@@ -24,11 +26,12 @@ public class Ilan implements Serializable {
     private boolean engelDurumuSarti;
     private boolean guvenlikKartiSarti;
     
-    // YENİ: Elden evrak teslimi
     private boolean eldenEvrak;
     private String evrakTeslimYeri;
     
-    private Date sonBasvuruTarihi;
+    // YENİ: Tarihler
+    private Date basvuruBaslangicTarihi; // Başvuru başlangıç
+    private Date sonBasvuruTarihi;       // Başvuru bitiş
     private Date yayinlanmaTarihi;
     private boolean aktif;
     
@@ -36,7 +39,6 @@ public class Ilan implements Serializable {
     private int uyumYuzdesi;
     private boolean yeniIlan;
     
-    // Boş constructor (Firebase için gerekli)
     public Ilan() {}
     
     // Getter ve Setter'lar
@@ -67,6 +69,10 @@ public class Ilan implements Serializable {
     public String getBasvuruLinki() { return basvuruLinki; }
     public void setBasvuruLinki(String basvuruLinki) { this.basvuruLinki = basvuruLinki; }
     
+    // YENİ: Yayınlanma adresi
+    public String getYayinlanmaAdresi() { return yayinlanmaAdresi; }
+    public void setYayinlanmaAdresi(String yayinlanmaAdresi) { this.yayinlanmaAdresi = yayinlanmaAdresi; }
+    
     public double getKpssMinimum() { return kpssMinimum; }
     public void setKpssMinimum(double kpssMinimum) { this.kpssMinimum = kpssMinimum; }
     
@@ -91,12 +97,15 @@ public class Ilan implements Serializable {
     public boolean isGuvenlikKartiSarti() { return guvenlikKartiSarti; }
     public void setGuvenlikKartiSarti(boolean guvenlikKartiSarti) { this.guvenlikKartiSarti = guvenlikKartiSarti; }
     
-    // YENİ: Elden evrak getter/setter
     public boolean isEldenEvrak() { return eldenEvrak; }
     public void setEldenEvrak(boolean eldenEvrak) { this.eldenEvrak = eldenEvrak; }
     
     public String getEvrakTeslimYeri() { return evrakTeslimYeri; }
     public void setEvrakTeslimYeri(String evrakTeslimYeri) { this.evrakTeslimYeri = evrakTeslimYeri; }
+    
+    // YENİ: Başvuru başlangıç tarihi
+    public Date getBasvuruBaslangicTarihi() { return basvuruBaslangicTarihi; }
+    public void setBasvuruBaslangicTarihi(Date basvuruBaslangicTarihi) { this.basvuruBaslangicTarihi = basvuruBaslangicTarihi; }
     
     public Date getSonBasvuruTarihi() { return sonBasvuruTarihi; }
     public void setSonBasvuruTarihi(Date sonBasvuruTarihi) { this.sonBasvuruTarihi = sonBasvuruTarihi; }
@@ -113,7 +122,7 @@ public class Ilan implements Serializable {
     public boolean isYeniIlan() { return yeniIlan; }
     public void setYeniIlan(boolean yeniIlan) { this.yeniIlan = yeniIlan; }
     
-    // YENİ: Evrak teslim bilgisi metin olarak
+    // Yardımcı metodlar
     public String getEvrakTeslimBilgisi() {
         if (!eldenEvrak) {
             return "Online Başvuru";
@@ -122,5 +131,44 @@ public class Ilan implements Serializable {
             return "Elden: " + evrakTeslimYeri;
         }
         return "Elden Evrak Gerekli";
+    }
+    
+    // YENİ: Kalan gün hesaplama
+    public String getKalanGunText() {
+        if (sonBasvuruTarihi == null) {
+            return "Süresiz";
+        }
+        
+        long diff = sonBasvuruTarihi.getTime() - System.currentTimeMillis();
+        long days = TimeUnit.MILLISECONDS.toDays(diff);
+        
+        if (days < 0) {
+            return "Süresi Doldu";
+        } else if (days == 0) {
+            long hours = TimeUnit.MILLISECONDS.toHours(diff);
+            if (hours <= 0) {
+                return "Son Gün!";
+            }
+            return hours + " saat kaldı";
+        } else if (days == 1) {
+            return "Yarın son!";
+        } else if (days <= 7) {
+            return days + " gün kaldı";
+        } else {
+            return days + " gün kaldı";
+        }
+    }
+    
+    // YENİ: Kalan gün rengi
+    public int getKalanGunRengi() {
+        if (sonBasvuruTarihi == null) return android.R.color.darker_gray;
+        
+        long diff = sonBasvuruTarihi.getTime() - System.currentTimeMillis();
+        long days = TimeUnit.MILLISECONDS.toDays(diff);
+        
+        if (days < 0) return android.R.color.holo_red_dark;
+        if (days <= 1) return android.R.color.holo_red_dark;
+        if (days <= 3) return android.R.color.holo_orange_dark;
+        return android.R.color.holo_green_dark;
     }
 }
