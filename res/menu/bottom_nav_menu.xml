@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_anasayfa"
+        android:icon="@android:drawable/ic_menu_home"
+        android:title="Ana Sayfa" />
+    <item
+        android:id="@+id/nav_ilanlar"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="İlanlar" />
+    <item
+        android:id="@+id/nav_kayitli"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Kayıtlı" />
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Profil" />
+</menu>
