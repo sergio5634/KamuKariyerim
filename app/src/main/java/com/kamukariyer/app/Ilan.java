@@ -24,6 +24,10 @@ public class Ilan implements Serializable {
     private boolean engelDurumuSarti;
     private boolean guvenlikKartiSarti;
     
+    // YENİ: Elden evrak teslimi
+    private boolean eldenEvrak;
+    private String evrakTeslimYeri;
+    
     private Date sonBasvuruTarihi;
     private Date yayinlanmaTarihi;
     private boolean aktif;
@@ -87,6 +91,13 @@ public class Ilan implements Serializable {
     public boolean isGuvenlikKartiSarti() { return guvenlikKartiSarti; }
     public void setGuvenlikKartiSarti(boolean guvenlikKartiSarti) { this.guvenlikKartiSarti = guvenlikKartiSarti; }
     
+    // YENİ: Elden evrak getter/setter
+    public boolean isEldenEvrak() { return eldenEvrak; }
+    public void setEldenEvrak(boolean eldenEvrak) { this.eldenEvrak = eldenEvrak; }
+    
+    public String getEvrakTeslimYeri() { return evrakTeslimYeri; }
+    public void setEvrakTeslimYeri(String evrakTeslimYeri) { this.evrakTeslimYeri = evrakTeslimYeri; }
+    
     public Date getSonBasvuruTarihi() { return sonBasvuruTarihi; }
     public void setSonBasvuruTarihi(Date sonBasvuruTarihi) { this.sonBasvuruTarihi = sonBasvuruTarihi; }
     
@@ -101,4 +112,15 @@ public class Ilan implements Serializable {
     
     public boolean isYeniIlan() { return yeniIlan; }
     public void setYeniIlan(boolean yeniIlan) { this.yeniIlan = yeniIlan; }
+    
+    // YENİ: Evrak teslim bilgisi metin olarak
+    public String getEvrakTeslimBilgisi() {
+        if (!eldenEvrak) {
+            return "Online Başvuru";
+        }
+        if (evrakTeslimYeri != null && !evrakTeslimYeri.isEmpty()) {
+            return "Elden: " + evrakTeslimYeri;
+        }
+        return "Elden Evrak Gerekli";
+    }
 }
