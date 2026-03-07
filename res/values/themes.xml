@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.KamuKariyerim" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Ana Renkler -->
+        <item name="colorPrimary">#2563EB</item>
+        <item name="colorPrimaryVariant">#1D4ED8</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        
+        <!-- İkincil Renkler -->
+        <item name="colorSecondary">#059669</item>
+        <item name="colorSecondaryVariant">#047857</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        
+        <!-- Arka Plan -->
+        <item name="android:windowBackground">#F8FAFC</item>
+        <item name="colorSurface">#FFFFFF</item>
+        
+        <!-- Hata Rengi -->
+        <item name="colorError">#DC2626</item>
+        
+        <!-- Metin Renkleri -->
+        <item name="android:textColorPrimary">#1E293B</item>
+        <item name="android:textColorSecondary">#64748B</item>
+        
+        <!-- Durum Çubuğu -->
+        <item name="android:statusBarColor">@color/mavi</item>
+    </style>
+</resources>
