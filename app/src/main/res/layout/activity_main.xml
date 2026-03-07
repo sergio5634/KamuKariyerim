@@ -1,4 +1,139 @@
-android:layout_height="wrap_content"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F4F8">
+
+    <!-- Üst Bar (Mavi) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1565C0"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KamuKariyerim"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvKullaniciBolum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bölüm: Yükleniyor..."
+            android:textColor="#E3F2FD"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Filtre Bilgisi -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvKpssBilgi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KPSS: -"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="#0D47A1"
+                android:padding="4dp 8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/tvEhliyetBilgi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ehliyet: -"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="#0D47A1"
+                android:padding="4dp 8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- İSTATİSTİK KARTI (YENİ) -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvIstatistik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 0 | Size Uygun: 0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0"
+                android:gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Filtre ve Sıralama Barı -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#FFFFFF">
+
+        <Spinner
+            android:id="@+id/spinnerSiralama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnFiltrele"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FİLTRELE"
+            android:textSize="12sp"
+            android:backgroundTint="#1565C0"/>
+    </LinearLayout>
+
+    <!-- İlan Listesi -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerIlanlar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Boş Durum Mesajı -->
+    <TextView
+        android:id="@+id/tvBosDurum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Size uygun ilan bulunamadı.\nProfil bilgilerinizi kontrol edin."
         android:textColor="#757575"
         android:textSize="16sp"
