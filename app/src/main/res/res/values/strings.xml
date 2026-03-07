@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KamuKariyerim</string>
-    <string name="hint_bolum">Bölüm adı yazın...</string>
-    <string name="hint_kpss">Örn: 85.5</string>
-    <string name="btn_kaydet">PROFİLİ KAYDET</string>
-    <string name="title_favoriler">Favoriler</string>
-    <string name="title_profil">Profil</string>
-    <string name="title_anasayfa">Ana Sayfa</string>
+    
+    <!-- Genel -->
+    <string name="tamam">Tamam</string>
+    <string name="iptal">İptal</string>
+    <string name="kaydet">Kaydet</string>
+    <string name="sil">Sil</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="anasayfa">Ana Sayfa</string>
+    <string name="ilanlar">İlanlar</string>
+    <string name="kayitli">Kayıtlı</string>
+    <string name="profil">Profil</string>
+    
+    <!-- İlan Kartı -->
+    <string name="uyum_yuzdesi">%1$d Uyum</string>
+    <string name="gun_kaldi">%1$d gün kaldı</string>
+    <string name="son_gun">Son Gün!</string>
+    <string name="suresi_doldu">Süresi Doldu</string>
+    
+    <!-- İlan Detay -->
+    <string name="ilan_detayi">İlan Detayı</string>
+    <string name="basvuruya_git">Başvuruya Git</string>
+    <string name="basvurdum">Başvurdum</string>
+    <string name="resmi_ilan_adresi">Resmi İlan Adresi</string>
+    <string name="basvuru_adresi">Başvuru Adresi</string>
+    
+    <!-- Profil -->
+    <string name="profil_bilgileri">Profil Bilgileri</string>
+    <string name="kisisel_bilgiler">Kişisel Bilgiler</string>
+    <string name="egitim_bilgileri">Eğitim Bilgileri</string>
+    <string name="kpss_bilgileri">KPSS Bilgileri</string>
+    <string name="ek_bilgiler">Ek Bilgiler</string>
+    
+    <!-- Hata Mesajları -->
+    <string name="hata_internet">İnternet bağlantınızı kontrol edin</string>
+    <string name="hata_veri_cekme">Veriler alınırken bir hata oluştu</string>
+    <string name="hata_bos_alan">Lütfen tüm zorunlu alanları doldurun</string>
 </resources>
