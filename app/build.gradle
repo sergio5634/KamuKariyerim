@@ -13,7 +13,7 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -37,6 +37,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:32.7.0')
@@ -47,14 +48,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-}
-android {
-    // ... mevcut ayarlar ...
-    
-    defaultConfig {
-        // ... mevcut ayarlar ...
-        multiDexEnabled true  // SADECE BU SATIRI EKLEYİN
-    }
-    
-    // ... diğer ayarlar ...
 }
