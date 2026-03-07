@@ -58,7 +58,7 @@ public class IlanAdapter extends RecyclerView.Adapter<IlanAdapter.IlanViewHolder
     class IlanViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView tvKurum, tvPozisyon, tvBolum, tvSehir, tvKadro, tvTarih, tvUyum;
-        TextView tvKpss, tvEhliyet, tvYas, tvIkamet;
+        TextView tvKpss, tvEhliyet, tvYas, tvIkamet, tvEvrakTeslim;
         MaterialButton btnDetay;
         ImageButton btnFavori;
         View viewUyumRengi;
@@ -77,6 +77,7 @@ public class IlanAdapter extends RecyclerView.Adapter<IlanAdapter.IlanViewHolder
             tvEhliyet = itemView.findViewById(R.id.tvEhliyet);
             tvYas = itemView.findViewById(R.id.tvYas);
             tvIkamet = itemView.findViewById(R.id.tvIkamet);
+            tvEvrakTeslim = itemView.findViewById(R.id.tvEvrakTeslim);
             btnDetay = itemView.findViewById(R.id.btnDetay);
             btnFavori = itemView.findViewById(R.id.btnFavori);
             viewUyumRengi = itemView.findViewById(R.id.viewUyumRengi);
@@ -107,9 +108,19 @@ public class IlanAdapter extends RecyclerView.Adapter<IlanAdapter.IlanViewHolder
             tvYas.setText(ilan.getYasSarti() != null ? "Yaş: " + ilan.getYasSarti() : "Yaş: Şartsız");
             tvIkamet.setText(ilan.getIkametSarti() != null ? "İkamet: " + ilan.getIkametSarti() : "İkamet: Şartsız");
 
+            // YENİ: Evrak teslim bilgisi
+            tvEvrakTeslim.setText(ilan.getEvrakTeslimBilgisi());
+            if (ilan.isEldenEvrak()) {
+                tvEvrakTeslim.setTextColor(ContextCompat.getColor(itemView.getContext(), android.R.color.holo_red_dark));
+                tvEvrakTeslim.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), android.R.color.transparent));
+            } else {
+                tvEvrakTeslim.setTextColor(ContextCompat.getColor(itemView.getContext(), android.R.color.holo_green_dark));
+                tvEvrakTeslim.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), android.R.color.transparent));
+            }
+
             // Yeni ilan badge
             if (ilan.isYeniIlan()) {
-                tvKurum.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_yeni, 0);
+                tvKurum.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.ic_notification_overlay, 0);
             } else {
                 tvKurum.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
             }
